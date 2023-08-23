@@ -1,0 +1,31 @@
+.clockcontainer {
+  background-color: blueviolet;
+  margin: 15%;
+  padding: 5%;
+  color: aliceblue;
+}
+
+.heading,
+.clock {
+  text-align: center;
+  font-size: 3em;
+}
+.design1{
+background-color: blueviolet;
+font-size: 3rem;
+text-align: center;
+}
+.colorit{
+  background-color: brown;
+  text-align: center;
+  justify-content:space-around;
+  font-size: 2rem;
+}
+.list{
+  background-color: aqua;
+  text-align: center;
+  font-size: 2rem;
+}
+.colorbody{
+  background-color: rgb(109, 173, 93);
+}

@@ -1,0 +1,24 @@
+<%- include('./partials/header') %>
+<div>
+  <h1 class="design1">Log it</h1>
+</div>
+<form action="" method="post"> <!--action is where you want to post form WHILE how do--> 
+  <label for="personal" class="colorit"> My personal task</label>
+  <input type="text" placeholder="enter your name" name="name"/>
+  <input type="number" placeholder="enter your age" name="age"/>
+  <input type="text" placeholder="enter your complexion" name="color" />
+  <input type="text" placeholder="enter your height" name="height"/>
+  <button id="data">add new person</button>
+</form>
+<div>
+  <%people.map((person)=>{%>
+    <!--to run javascript in an ejs file add <% %> in an open and closing-->
+    <p><%= person.name %></p> 
+    <p><%= person.age %></p> 
+    <p><%= person.height%></p> 
+    <p><%= person.color %></p> 
+    <%})%>
+
+</div>
+
+<%- include('./partials/footer') %>

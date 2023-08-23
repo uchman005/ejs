@@ -1,0 +1,19 @@
+<%- include('./partials/header') %>
+<div>
+  <h1 class="list">your to do list</h1>
+
+  <div id="todo">
+    <%todos.map((newListItem)=>{%>
+    <!--to run javascript in an ejs file add <% %> in an open and closing-->
+    <p><%= newListItem %></p>
+    <% });%> <% if (todos.length>0){%>
+    <p><%= todos.length %></p>
+    <%}%>
+  </div>
+</div>
+<form action="/addtodo" method="post">
+  <label for="todo"> todo </label>
+  <input id="todo" placeholder="enter your todo" type="text" name="todo" />
+  <button id="todobutton">Add to do</button>
+</form>
+<%- include('./partials/footer') %>
