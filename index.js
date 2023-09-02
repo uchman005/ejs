@@ -6,7 +6,7 @@ const app = express(); // this is create an instance for an express
 //const secret = process.env.PAYSTACK_SECRET
 
 const PORT = process.env.PORT || 30001;
- //server set up ends here
+//server set up ends here
 const MONGOURL = process.env.MONGOURL; // ***This paragraph handle the server connection
 mongoose.connect(MONGOURL, {
   useNewUrlParser: true,
@@ -23,7 +23,8 @@ DB.on("error", (error) => {
 // ###the helper that to know the condition of the connected server
 
 // schema is used indicate or limit or control the kind of objects that will be allowed in a particular database.
-const personsSchema = new mongoose.Schema({  // This paragraph helps to set my data forms 
+const personsSchema = new mongoose.Schema({
+  // This paragraph helps to set my data forms
   name: String, // String is shorthand for {type: String}
   age: Number,
   color: String,
@@ -34,8 +35,8 @@ const personsSchema = new mongoose.Schema({  // This paragraph helps to set my d
 
 // Modelling
 
-const Person = mongoose.model("person", personsSchema);//*** this used to perform operation on the database
- // special NOTE: C.R.U.D create, read, update and destroy or delete
+const Person = mongoose.model("person", personsSchema); //*** this used to perform operation on the database
+// special NOTE: C.R.U.D create, read, update and destroy or delete
 
 app.set("view engine", "ejs"); // this sets view engine to ejs
 app.use(bodyParser.urlencoded({ extended: false })); //  this is set up for body parser
@@ -45,11 +46,10 @@ const todos = [];
 
 app.get("/", function (req, res) {
   // root route "/" this is wher the app starts
-  res.render("index");
+  res.render("index", { title: "JUMAX HOME" });
 });
 
 app.get("/about", (req, res) => {
-  
   res.render("about", { name: "jude", age: 50 });
 });
 app.post("/addtodo", (req, res) => {
@@ -72,22 +72,33 @@ app.get("/name", async (req, res) => {
   res.render("name", { people });
 });
 
-app.get ('/name/id', (req, res)=>{
-res.send("testing get method")
+app.get("/pages/about", (req, res) => {
+  res.render("pages/about", { title: "JUMAX ABOUT" });
+});
+
+app.get('/pages/:page',(req, res)=>{
+  let page = req.params.page
+  let x = `JUMAX ${page.toUpperCase()}`
+  res.render('pages/'+ page, {title:x}) 
+  
 })
 
-app.get("/jude/:eze",(req,res)=>{
+app.get("/name/id", (req, res) => {
+  res.send("testing get method");
+});
+app.get("/didit", (req, res) => {
+  res.send("i did it myself");
+});
+app.get("/jude/:eze", (req, res) => {
   console.log(req.body);
   console.log(req.params.eze);
-  res.send(`The dynamic: ${req.params.eze}`)
-})
-
-app.post("/jude/eze",(req, res)=>{
+  res.send(`The dynamic: ${req.params.eze}`);
+});
+app.post("/jude/eze", (req, res) => {
   console.log(req.body);
   console.log(req.params);
-  res.send("testing post method")
-
-})
+  res.send("testing post method");
+});
 app.post("/name", async (req, res) => {
   console.log(req.body);
   let { name, age, color, height } = req.body;
