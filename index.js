@@ -114,7 +114,7 @@ app.post("/name", async (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.status(404).send('Page not found'); // Customize the response as needed
+  res.render('error'); // Customize the response as needed
 });
 app.listen(PORT, () => {
   console.log(`server is live on port ${PORT}`);
