@@ -1,9 +1,3 @@
 {
-    "name": "test",
-    "builds": [
-        {
-            "use": "@vercel/node",
-            "src": "./index.js"
-        }
-    ]
+    "name": "test"
 }
